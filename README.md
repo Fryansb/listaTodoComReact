@@ -1,4 +1,5 @@
-<h1 align="center">Minhas Tarefas (To-Do List)</h1>
+
+<h1 align="center">Minhas Tarefas (To‑Do List)</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white" alt="React Badge"/>
@@ -7,10 +8,6 @@
   <img src="https://img.shields.io/badge/Styled--Components-6-DB7093?logo=styledcomponents&logoColor=white" alt="Styled Components Badge"/>
   <img src="https://img.shields.io/badge/Create%20React%20App-5-09D3AC?logo=createreactapp&logoColor=white" alt="CRA Badge"/>
 </p>
-
-<h1 align="center">Minhas Tarefas (To‑Do List)</h1>
-
-
 
 <h3 align="left">Aplicação de lista de tarefas construída com React, TypeScript, Redux Toolkit e Styled Components.</h3>
 
