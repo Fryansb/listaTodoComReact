@@ -1,3 +1,13 @@
+<h1 align="center">Minhas Tarefas (To-Do List)</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white" alt="React Badge"/>
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript Badge"/>
+  <img src="https://img.shields.io/badge/Redux%20Toolkit-1-764ABC?logo=redux&logoColor=white" alt="Redux Toolkit Badge"/>
+  <img src="https://img.shields.io/badge/Styled--Components-6-DB7093?logo=styledcomponents&logoColor=white" alt="Styled Components Badge"/>
+  <img src="https://img.shields.io/badge/Create%20React%20App-5-09D3AC?logo=createreactapp&logoColor=white" alt="CRA Badge"/>
+</p>
+
 <h1 align="center">Minhas Tarefas (To‑Do List)</h1>
 
 
