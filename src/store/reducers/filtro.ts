@@ -3,13 +3,13 @@ import * as enums from '../../utils/enums/Tarefa'
 
 type FiltroState = {
   termo: string
-  criterio: 'all' | 'priority' | 'status'
+  criterio: 'prioridade' | 'status' | 'todas'
   valor?: enums.Priority | enums.Status
 }
 
 const initialState: FiltroState = {
   termo: '',
-  criterio: 'all'
+  criterio: 'todas'
 }
 
 const FiltroSlice = createSlice({
@@ -18,10 +18,20 @@ const FiltroSlice = createSlice({
   reducers: {
     setTermo: (state, action: PayloadAction<string>) => {
       state.termo = action.payload
+    },
+    alterarFiltro: (
+      state,
+      action: PayloadAction<{
+        criterio: 'prioridade' | 'status' | 'todas'
+        valor?: enums.Priority | enums.Status
+      }>
+    ) => {
+      state.criterio = action.payload.criterio
+      state.valor = action.payload.valor
     }
   }
 })
 
-export const { setTermo } = FiltroSlice.actions
+export const { setTermo, alterarFiltro } = FiltroSlice.actions
 
 export default FiltroSlice.reducer

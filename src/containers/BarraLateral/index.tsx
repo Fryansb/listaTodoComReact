@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import FiltroCard from '../../components/FiltroCard'
-import { RootReducer } from '../../store'
-
 import * as S from './styles'
+import { RootReducer } from '../../store'
 import { setTermo } from '../../store/reducers/filtro'
+
+import * as enums from '../../utils/enums/Tarefa'
 
 const BarraLateral = () => {
   const dispatch = useDispatch()
@@ -11,20 +12,42 @@ const BarraLateral = () => {
 
   return (
     <S.Aside>
-      <S.Campo
-        type="text"
-        placeholder="Buscar tarefa..."
-        value={termo}
-        onChange={(evento) => dispatch(setTermo(evento.target.value))}
-      />
-      <S.Filtros>
-        <FiltroCard legenda="pendentes" contador={1} />
-        <FiltroCard legenda="concluídas" contador={2} />
-        <FiltroCard legenda="urgentes" contador={3} />
-        <FiltroCard legenda="importantes" contador={4} />
-        <FiltroCard legenda="normais" contador={5} />
-        <FiltroCard legenda="todas" contador={6} ativo />
-      </S.Filtros>
+      <div>
+        <S.Campo
+          type="text"
+          placeholder="Buscar"
+          value={termo}
+          onChange={(evento) => dispatch(setTermo(evento.target.value))}
+        />
+        <S.Filtros>
+          <FiltroCard
+            valor={enums.Status.PENDING}
+            criterio="status"
+            legenda="pendentes"
+          />
+          <FiltroCard
+            valor={enums.Status.COMPLETED}
+            criterio="status"
+            legenda="concluídas"
+          />
+          <FiltroCard
+            valor={enums.Priority.IMPORTANT}
+            criterio="prioridade"
+            legenda="urgentes"
+          />
+          <FiltroCard
+            valor={enums.Priority.URGENT}
+            criterio="prioridade"
+            legenda="importantes"
+          />
+          <FiltroCard
+            valor={enums.Priority.NORMAL}
+            criterio="prioridade"
+            legenda="normal"
+          />
+          <FiltroCard criterio="todas" legenda="todas" />
+        </S.Filtros>
+      </div>
     </S.Aside>
   )
 }
