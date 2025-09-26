@@ -1,5 +1,6 @@
 import { createGlobalStyle, styled } from 'styled-components'
 import variaveis from './variaveis'
+import { device } from './breakpoints'
 
 const EstilosGlobal = createGlobalStyle`
   * {
@@ -13,6 +14,10 @@ const EstilosGlobal = createGlobalStyle`
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 224px auto;
+
+  @media ${device.telaPequena} {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const MainContainer = styled.main`
