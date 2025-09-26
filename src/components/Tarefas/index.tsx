@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { ButtonSave } from '../../styles'
+import { ButtonSave, Button } from '../../styles'
 import * as S from './styles'
-import { remover, editar } from '../../store/reducers/tarefas'
 import TarefaClass from '../../models/Tarefa'
+import * as enums from '../../utils/enums/Tarefa'
+import {
+  remover,
+  editar,
+  alterarStatus as alterarStatusAction
+} from '../../store/reducers/tarefas'
 
 type Props = TarefaClass
 
@@ -30,9 +35,29 @@ const Tarefa = ({
     setDescription(descriptionOriginal)
   }
 
+  function alterarStatus(evento: ChangeEvent<HTMLInputElement>) {
+    dispatch(
+      alterarStatusAction({
+        id,
+        finalizado: evento.target.checked
+      })
+    )
+  }
+
   return (
     <S.Card>
-      <S.Title>{title}</S.Title>
+      <label htmlFor={title}>
+        <input
+          type="checkbox"
+          id={title}
+          checked={status === enums.Status.COMPLETED}
+          onChange={alterarStatus}
+        />
+        <S.Title>
+          {estaEditando && <em>Editando: </em>}
+          {title}
+        </S.Title>
+      </label>
       <S.Tag parameter="priority" priority={priority}>
         {priority}
       </S.Tag>
@@ -52,10 +77,10 @@ const Tarefa = ({
                 dispatch(
                   editar({
                     description,
-                    id,
                     priority,
                     status,
-                    title
+                    title,
+                    id
                   })
                 )
                 setEstaEditando(false)
@@ -73,7 +98,7 @@ const Tarefa = ({
           </>
         ) : (
           <>
-            <S.Button onClick={() => setEstaEditando(true)}>Editar</S.Button>
+            <Button onClick={() => setEstaEditando(true)}>Editar</Button>
             <S.ButtonCancelRemove onClick={() => dispatch(remover(id))}>
               Remover
             </S.ButtonCancelRemove>
